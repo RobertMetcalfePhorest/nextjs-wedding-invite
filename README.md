@@ -2,7 +2,7 @@
 
 ### Features
 
-- configurable parameters (e.g. map url, event date). see: `config/app.sample.js`
+- configurable parameters (e.g. map url, event date). see: `config/app.js`
 - autoplay animation in footer
 - optional qr scanner
 - optional unique links per guest (based on csv)
@@ -12,7 +12,7 @@
 **Try in codesandbox:**
 
 - Visit https://codesandbox.io/s/github/wzulfikar/nextjs-wedding-invite
-- Rename `src/config/app.sample.js` to `src/config/app.js`
+- Rename `src/config/app.js` to `src/config/app.js`
 - Rename `pages/guest_list.sample.json` to `pages/guest_list.json`
 - Change any value in `src/config/app.js` to see it updated in real time
 
