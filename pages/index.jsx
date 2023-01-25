@@ -1,11 +1,9 @@
 import AddToCalendar from "react-add-to-calendar";
 
-import Head from "../src/components/Head";
-import resolvePath from "../src/utils/resolvePath";
-import appConfig from "../src/config/app";
-import {defaultLocale} from "../src/i18n";
-import guestList from "./guest_list.json";
-import {t} from "../src/i18n";
+import Head from "../src/components/Head.jsx";
+import resolvePath from "../src/utils/resolvePath.js";
+import appConfig from "../src/config/app.js";
+import {defaultLocale, t} from "../src/i18n/index.js";
 
 const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
   const {logo, coupleInfo, venue, weddingDay, weddingDate, weddingTime, calendarInfo} = appConfig
@@ -292,27 +290,7 @@ ShowInvite.getInitialProps = (ctx) => {
       ...emptyGuestParams
     }
   }
-
-  const guestData = guestList.data
-  const guestListLastUpdatedAt = guestList.meta.lastUpdatedAt
-  const {name, greeting, locale} = guestData.filter(guest => guest.guestId === guestId)[0] || {}
-  if (!name) {
-    return {
-      currentUrl,
-      ...emptyGuestParams
-    }
-  }
-
-  return {
-    currentUrl,
-    guestListLastUpdatedAt,
-    guest: {
-      name,
-      greeting,
-      guestId,
-      locale: locale || localeParams,
-    }
-  }
+  
 }
 
 export default ShowInvite
