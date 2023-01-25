@@ -1,9 +1,37 @@
 import AddToCalendar from "react-add-to-calendar";
 
-import Head from "../src/components/Head.jsx";
-import resolvePath from "../src/utils/resolvePath.js";
-import appConfig from "../src/config/app.js";
-import {defaultLocale, t} from "../src/i18n/index.js";
+import Head from "../src/components/Head";
+import resolvePath from "../src/utils/resolvePath";
+import {defaultLocale, t} from "../src/i18n";
+
+const appConfig = {
+  weddingDay: "Saturday",
+  weddingTime: "12.00 - 13.00",
+  weddingDate: "August 1, 2024",
+  showBuiltWithInfo: true,
+  calendarInfo: {
+    timeStartISO: "2024-08-01T12:00:00+01:00",
+    timeEndISO: "2024-08-01T13:00:00+01:00"
+  },
+  coupleInfo: {
+    brideName: "Lyndsey",
+    groomName: "Robert",
+    coupleNameFormat: "GROOM_FIRST"
+  },
+  venue: {
+    name: "Lough Rynn Castle",
+    addressLine1: "Mohill",
+    addressLine2: "Co. Leitrim",
+    city: "Mohill, Co. Leitrim",
+    country: "Ireland",
+    mapUrl: "https://goo.gl/maps/gGvMJduxbrvKJhod8"
+  },
+  logo: {
+    headerLogo: "/assets/images/ring-svg.png",
+    footerLogo: "/assets/video/aw-ring-logo-ticker.mp4",
+    footerLogoType: "mp4"
+  },
+};
 
 const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
   const {logo, coupleInfo, venue, weddingDay, weddingDate, weddingTime, calendarInfo} = appConfig
