@@ -1,8 +1,9 @@
-import AddToCalendar from "react-add-to-calendar";
+import { google, outlook, office365, yahoo, ics } from "calendar-link";
 
 import Head from "../src/components/Head";
 import resolvePath from "../src/utils/resolvePath";
 import {defaultLocale, t} from "../src/i18n";
+
 
 const appConfig = {
   weddingDay: "Saturday",
@@ -33,6 +34,8 @@ const appConfig = {
   },
 };
 
+
+
 const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
   const {logo, coupleInfo, venue, weddingDay, weddingDate, weddingTime, calendarInfo} = appConfig
   const {brideName, groomName, coupleNameFormat} = coupleInfo
@@ -57,9 +60,14 @@ const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
     title: eventTitle,
     description: eventDescription,
     location: `${venue.city}, ${venue.country}`,
-    startTime: calendarInfo.timeStartISO,
-    endTime: calendarInfo.timeEndISO
+    start: calendarInfo.timeStartISO,
+    end: calendarInfo.timeEndISO
   }
+
+  function AddToCalendar() {
+    window.open(google(calendarEvent), '_blank', 'noreferrer')
+  }
+
 
   return (
     <div>
@@ -153,7 +161,7 @@ const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
                   paddingTop: '0.2rem',
                   paddingBottom: '0.2rem',
                 }}>
-                  <AddToCalendar event={calendarEvent} buttonLabel={t("btnAddToMyCalendar")}/>
+                  <button style={{marginLeft: -12}} className={"btn"} onClick={AddToCalendar}>Add to Calendar</button>
                 </div>
                 <img src="/assets/images/section_shape.png" alt="Shape"/>
               </div>
@@ -178,7 +186,7 @@ const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
                     <div className="count_content" style={{zIndex: 1, paddingTop: 20}}>
                       <a href={venue.mapUrl}>
                         <img style={{borderRadius: 5}} src="/assets/images/loughRynn.png"
-                             alt="oval hotel map"/>
+                             alt="lough rynn"/>
                       </a>
                       <a href={venue.mapUrl} style={{
                         maxWidth: '75vw',
@@ -318,7 +326,7 @@ ShowInvite.getInitialProps = (ctx) => {
       ...emptyGuestParams
     }
   }
-  
+
 }
 
 export default ShowInvite
