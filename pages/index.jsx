@@ -8,7 +8,6 @@ import guestList from "./guest_list.json";
 import {t} from "../src/i18n";
 
 const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
-  // Initiate config variables
   const {logo, coupleInfo, venue, weddingDay, weddingDate, weddingTime, calendarInfo} = appConfig
   const {brideName, groomName, coupleNameFormat} = coupleInfo
 
