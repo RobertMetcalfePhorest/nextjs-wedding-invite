@@ -1,9 +1,9 @@
 import AddToCalendar from "react-add-to-calendar";
 
-import Head from "@src/components/Head";
-import resolvePath from "@src/utils/resolvePath";
-import appConfig from "@src/config/app";
-import {defaultLocale} from "@src/i18n";
+import Head from "../src/components/Head";
+import resolvePath from "../src/utils/resolvePath";
+import appConfig from "../src/config/app";
+import {defaultLocale} from "../src/i18n";
 import guestList from "./guest_list.json";
 import {t} from "../src/i18n";
 

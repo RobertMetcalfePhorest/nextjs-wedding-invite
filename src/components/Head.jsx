@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import resolvePath from '@src/utils/resolvePath';
+import resolvePath from '../utils/resolvePath';
 
 export default ({ title, description, url, logo, author, siteName, publishedTime, modifiedTime }) => {
   return (
