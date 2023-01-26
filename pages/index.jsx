@@ -71,13 +71,6 @@ const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
 
   return (
     <div>
-      <style jsx global>{`
-        a.react-add-to-calendar__button span {
-          cursor: pointer;
-          text-decoration: underline;
-        }
-      `}
-      </style>
       <Head
         title={eventTitle}
         description={eventDescription}
