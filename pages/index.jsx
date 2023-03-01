@@ -1,4 +1,4 @@
-import { google, outlook, office365, yahoo, ics } from "calendar-link";
+import {google} from "calendar-link";
 
 import Head from "../src/components/Head";
 import resolvePath from "../src/utils/resolvePath";
@@ -6,13 +6,13 @@ import {defaultLocale, t} from "../src/i18n";
 
 
 const appConfig = {
-  weddingDay: "Saturday",
-  weddingTime: "12.00 - 13.00",
-  weddingDate: "August 1, 2024",
+  weddingDay: "Monday",
+  weddingTime: "12.30 - 13.30",
+  weddingDate: "May 20, 2024",
   showBuiltWithInfo: true,
   calendarInfo: {
-    timeStartISO: "2024-08-01T12:00:00+01:00",
-    timeEndISO: "2024-08-01T13:00:00+01:00"
+    timeStartISO: "2024-05-20T12:30:00+01:00",
+    timeEndISO: "2024-05-20T13:30:00+01:00"
   },
   coupleInfo: {
     brideName: "Lyndsey",
@@ -20,12 +20,12 @@ const appConfig = {
     coupleNameFormat: "GROOM_FIRST"
   },
   venue: {
-    name: "Lough Rynn Castle",
-    addressLine1: "Mohill",
-    addressLine2: "Co. Leitrim",
-    city: "Mohill, Co. Leitrim",
+    name: "Cabra Castle",
+    addressLine1: "Carrickmacross Road",
+    addressLine2: "Cormey, Kingscourt",
+    city: "Co. Cavan",
     country: "Ireland",
-    mapUrl: "https://goo.gl/maps/gGvMJduxbrvKJhod8"
+    mapUrl: "https://goo.gl/maps/iw9aHBV68n2ePUEg9"
   },
   logo: {
     headerLogo: "/assets/images/ring-svg.png",
@@ -33,7 +33,6 @@ const appConfig = {
     footerLogoType: "mp4"
   },
 };
-
 
 
 const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
@@ -59,7 +58,7 @@ const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
   const calendarEvent = {
     title: eventTitle,
     description: eventDescription,
-    location: `${venue.city}, ${venue.country}`,
+    location: 'Cabra Castle',
     start: calendarInfo.timeStartISO,
     end: calendarInfo.timeEndISO
   }
@@ -119,7 +118,7 @@ const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
                           data-animation="fadeInUp"
                           data-delay="1s"
                           style={{animationDelay: '1s'}}
-                        >{venue.name}, {venue.city}, {venue.country}.</span>
+                        >{venue.name}, {venue.city}, {venue.country}</span>
                       </div>
                     </div>
                   </div>
@@ -178,8 +177,8 @@ const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
                   >
                     <div className="count_content" style={{zIndex: 1, paddingTop: 20}}>
                       <a href={venue.mapUrl}>
-                        <img style={{borderRadius: 5}} src="/assets/images/loughRynn.png"
-                             alt="lough rynn"/>
+                        <img style={{borderRadius: 5}} src="/assets/images/cabraCastle.png"
+                             alt="Cabra Castle"/>
                       </a>
                       <a href={venue.mapUrl} style={{
                         maxWidth: '75vw',
