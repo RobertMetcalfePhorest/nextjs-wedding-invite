@@ -187,7 +187,7 @@ const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
                     className="single_count d-flex align-items-center justify-content-center mt-30"
                   >
                     <div className="count_content" style={{zIndex: 1, paddingTop: 20}}>
-                      <a href={venue.mapUrl}>
+                      <a href={church.mapUrl}>
                         <img style={{borderRadius: 5}} src="/assets/images/church.png"
                              alt="St Oliver Plunkett's Church"/>
                       </a>
