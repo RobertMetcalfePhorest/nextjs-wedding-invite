@@ -255,8 +255,8 @@ const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
                       </i>
                     </p>
                   </div>
-                  <div className={'row'} style={{justifyContent: 'center'}}>
-                    <div style={{marginRight: 12}}>
+                  <div className={'row'} style={{justifyContent: 'space-evenly'}}>
+                    <div style={{marginRight: 0}}>
                       <p className="text">
                         <a href={church.mapUrl}
                            style={{
@@ -271,7 +271,7 @@ const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
                         <b>{weddingDate} · {weddingTime}</b>
                       </p>
                     </div>
-                    <div style={{marginLeft: 12}}>
+                    <div style={{marginLeft: 0}}>
                       <p className="text">
                         <a href={venue.mapUrl}
                            style={{
