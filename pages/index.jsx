@@ -7,7 +7,7 @@ import {defaultLocale, t} from "../src/i18n";
 
 const appConfig = {
   weddingDay: "Monday",
-  weddingTime: "12.30 - 13.30",
+  weddingTime: "12.30",
   weddingDate: "May 20, 2024",
   showBuiltWithInfo: true,
   calendarInfo: {
@@ -27,6 +27,14 @@ const appConfig = {
     country: "Ireland",
     mapUrl: "https://goo.gl/maps/iw9aHBV68n2ePUEg9"
   },
+  church: {
+    name: "St Oliver Plunkett's Church",
+    addressLine1: "Sea Road, Haggardstown",
+    addressLine2: "Blackrock",
+    city: "Co. Dundalk",
+    country: "Ireland",
+    mapUrl: "https://goo.gl/maps/Zy9o9cXcQyu31PYD9"
+  },
   logo: {
     headerLogo: "/assets/images/ring-svg.png",
     footerLogo: "/assets/video/aw-ring-logo-ticker.mp4",
@@ -36,7 +44,7 @@ const appConfig = {
 
 
 const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
-  const {logo, coupleInfo, venue, weddingDay, weddingDate, weddingTime, calendarInfo} = appConfig
+  const {logo, coupleInfo, venue, weddingDay, weddingDate, weddingTime, calendarInfo, church} = appConfig
   const {brideName, groomName, coupleNameFormat} = coupleInfo
 
   const coupleNameStr = coupleNameFormat === 'GROOM_FIRST'
@@ -47,18 +55,18 @@ const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
     : (<>{brideName} <span>&amp;</span> {groomName}</>)
 
   // Venue info
-  const venueBrief = `${venue.name}, ${venue.city}, ${venue.country}`
+  const venueBrief = `${church.name}, ${church.city}, ${church.country}`
   const weddingDateBrief = `${weddingDay}, ${weddingDate}`
 
   // Event info
   const eventTitle = `${coupleNameStr}'s Wedding`
-  let eventDescription = `${weddingDateBrief} at ${venue.name}, ${venue.city}`
+  let eventDescription = `${weddingDateBrief} at ${church.name}, ${church.addressLine2}`
 
   // Calendar payload
   const calendarEvent = {
     title: eventTitle,
     description: eventDescription,
-    location: 'Cabra Castle',
+    location: 'St Oliver Plunkett\'s Church Blackrock',
     start: calendarInfo.timeStartISO,
     end: calendarInfo.timeEndISO
   }
@@ -118,7 +126,10 @@ const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
                           data-animation="fadeInUp"
                           data-delay="1s"
                           style={{animationDelay: '1s'}}
-                        >{venue.name}, {venue.city}, {venue.country}</span>
+                        >{church.name}, {church.addressLine2}, {church.country}
+                          <br/>
+                          {venue.name}, {venue.addressLine2}, {venue.country}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -177,16 +188,16 @@ const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
                   >
                     <div className="count_content" style={{zIndex: 1, paddingTop: 20}}>
                       <a href={venue.mapUrl}>
-                        <img style={{borderRadius: 5}} src="/assets/images/cabraCastle.png"
-                             alt="Cabra Castle"/>
+                        <img style={{borderRadius: 5}} src="/assets/images/church.png"
+                             alt="St Oliver Plunkett's Church"/>
                       </a>
-                      <a href={venue.mapUrl} style={{
+                      <a href={church.mapUrl} style={{
                         maxWidth: '75vw',
                         overflowX: 'hidden',
                         textOverflow: 'ellipsis',
                         marginTop: 10,
                       }}>
-                        {venue.mapUrl}
+                        {church.mapUrl}
                       </a>
                     </div>
                   </div>
@@ -244,19 +255,38 @@ const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
                       </i>
                     </p>
                   </div>
-                  <p className="text">
-                    <a href={venue.mapUrl}
-                       style={{
-                         borderBottom: '0.2rem solid',
-                         marginBottom: 10,
-                       }}><b>{venue.name}</b></a>
-                    <br/>{venue.addressLine1}
-                    <br/>{venue.addressLine2}
-                    <br/>{venue.country}.
-                  </p>
-                  <p className="text" style={{marginTop: 10}}>
-                    <b>{weddingDate} · {weddingTime}</b>
-                  </p>
+                  <div className={'row'} style={{justifyContent: 'center'}}>
+                    <div style={{marginRight: 12}}>
+                      <p className="text">
+                        <a href={church.mapUrl}
+                           style={{
+                             borderBottom: '0.2rem solid',
+                             marginBottom: 10,
+                           }}><b>{church.name}</b></a>
+                        <br/>{church.addressLine1}
+                        <br/>{church.addressLine2}
+                        <br/>{church.country}
+                      </p>
+                      <p className="text" style={{marginTop: 10}}>
+                        <b>{weddingDate} · {weddingTime}</b>
+                      </p>
+                    </div>
+                    <div style={{marginLeft: 12}}>
+                      <p className="text">
+                        <a href={venue.mapUrl}
+                           style={{
+                             borderBottom: '0.2rem solid',
+                             marginBottom: 10,
+                           }}><b>{venue.name}</b></a>
+                        <br/>{venue.addressLine1}
+                        <br/>{venue.addressLine2}
+                        <br/>{venue.country}
+                      </p>
+                      <p className="text" style={{marginTop: 10}}>
+                        <b>Reception to follow</b>
+                      </p>
+                    </div>
+                  </div>
 
                   {t('invitationClosing') && !t('invitationClosing').startsWith("[missing") &&
                     <p className="text" style={{
@@ -286,6 +316,9 @@ const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
               <h3 className="title">
                 {coupleName}
               </h3>
+              <p className="text" style={{marginTop: 10}}>
+                <b>#OneMooreMetcalfe</b>
+              </p>
             </div>
           </div>
         </div>
