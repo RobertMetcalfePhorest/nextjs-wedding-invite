@@ -3,6 +3,7 @@ import {google} from "calendar-link";
 import Head from "../src/components/Head";
 import resolvePath from "../src/utils/resolvePath";
 import {defaultLocale, t} from "../src/i18n";
+import {useSnapCarousel} from "react-snap-carousel";
 
 
 const appConfig = {
@@ -74,6 +75,8 @@ const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
   function AddToCalendar() {
     window.open(google(calendarEvent), '_blank', 'noreferrer')
   }
+
+  const { scrollRef } = useSnapCarousel()
 
 
   return (
@@ -226,8 +229,8 @@ const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
               animationName: 'fadeInUp'
             }}
           >
-            <div className="row justify-content-center">
-              <div className="col-lg-9">
+            <div className="">
+              <div className="">
                 <div className="section_title text-center pb-30">
                   <h3 className="title">{t('invitationIntro')}</h3>
                   <div style={{
@@ -300,6 +303,36 @@ const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
                   }
                 </div>
               </div>
+              <div className="section_title text-center pb-30 pb" style={{marginTop: 50}}>
+                <h3 className="title">{t('frequentlyAskedQs')}</h3>
+                <ul
+                    ref={scrollRef}
+                    style={{
+                      display: 'flex',
+                      overflow: 'auto',
+                      scrollSnapType: 'x mandatory',
+                    }}
+                >
+                  {FAQ.map(({title, description}, i) => (
+                      <li
+                          style={{
+                            width: '400px',
+                            height: '500px',
+                            flexShrink: 0,
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            marginLeft: 20,
+                            marginRight: 20,
+                            flexDirection: 'column'
+                          }}
+                      >
+                        <h3>{title}</h3>
+                        <p className="text">{description}</p>
+                      </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -353,5 +386,35 @@ ShowInvite.getInitialProps = (ctx) => {
   }
 
 }
+
+
+const FAQ = [
+  {title: '1. What time should I arrive to the ceremony?', description: 'Our ceremony is scheduled to begin at 12:30 PM, sharp. Guests should aim to arrive between 12 and 12:15 in order to have enough time to park and find their seats. Please enter the church through the red doors at the front, not the side doors nearest the parking lot.'},
+  {title: '2. What is the dress code?', description: 'We are having a black tie wedding. Gentlemen should wear tuxedos, and ladies should wear long dresses. Hats are not required.'},
+  {title: '3. Will the ceremony, cocktail hour, and reception take place indoors or outdoors?', description: 'Our ceremony will take place indoors. Our cocktail hour will take place indoors, with an option to enjoy refreshments outside on a covered patio. Our reception dinner will take place indoors, and all dancing will take place indoors.'},
+  {title: '4. What will the weather be like?', description: 'While we can’t predict the weather, May is notoriously pleasant in Ireland. Weather ranges between 16 °C (55 °F) and 20 °C (72 °F), and while there is a higher chance than usual for sunny skies, rain is always likely in Ireland. Guests should come prepared with a light shawl or outer layer.'},
+  {title: '5. What will your wedding day timeline look like?', description: 'We are having a traditional Catholic wedding mass, which takes approximately 1 hour. We expect the ceremony to be finished at 1:30, followed by a receiving line. Cocktail hour will start immediately after at Cabra Castle, and we will be ringing the bell for dinner at 5:30. Dancing will end at 2 AM, with the opportunity for an after party lasting into the small hours of the morning.'},
+  {title: '6. How do I get to the wedding venue?', description: 'We recommend all guests download Ireland on Google Maps for offline access, as cell reception can be spotty. Google Maps links can be found in the details section, above. Our ceremony venue is the Church of St. Oliver Plunkett, located on Sea Road in Blackrock, Co. Louth. Our ceremony venue is Cabra Castle, in Kingscourt, Co. Cavan, approximately 45 minutes from the Church.'},
+  {title: '7. Will transportation be provided?', description: 'We will not be providing transportation, so guests should plan to drive their own cars to the church and to the reception venue.'},
+  {title: '8. Is there parking available at the wedding venue?', description: 'There is free parking available at both the church and the reception venue.'},
+  {title: '9. Can I bring my kids?', description: 'While we wish we could accommodate all children, we kindly ask that only children named on the invitations attend our wedding due to space constraints.'},
+  {title: '10. What type of food and drink will be served during the cocktail hour and reception?', description: 'We will be serving canapés, and champagne and beer will be available during the cocktail hour. Soft drinks will also be available. Dinner is a 5-course plated meal, followed by wedding cake. We will also have a late-night dinner served around 11 PM.'},
+  {title: '11. I have dietary restrictions/allergies. What\'s the best way to let you know?', description: 'If you have special dietary requirements, it is essential that you inform us on your RSVP card so we can instruct our reception venue accordingly.'},
+  {title: '12. Will there be an open bar?', description: 'Complimentary drinks will be served during the cocktail hour. Dinner is accompanied by a half-bottle of wine, and a complimentary toast. All other alcohol must be purchased at the bar, which takes both cash and debit/credit card.'},
+  {title: '13. Have you booked hotel room blocks for your guests?', description: 'Yes, we have a block of rooms available for the night before, night of, and night after the wedding ceremony. Please use our wedding code W42005 when booking. To avail of the wedding bed and breakfast rate, it is essential that you book through Cabra Castle’s website, or by calling Cabra Castle at +353 (42) 966-7030.'},
+  {title: '14. Can I take pictures during the ceremony to post on social media?', description: 'While we understand you want to cherish the memories from this weekend, we respectfully ask for all guests to refrain from taking photos and videos during the ceremony. Our guests are more than welcome to take photos at the church before and after the ceremony, during the cocktail hour, and the during the reception. Photography when the music and dancing gets started is highly encouraged! We will be making our professional wedding photos available, and all guests are welcome to download and save these images at their leisure.'},
+  {title: '15. What’s the best way to RSVP?', description: 'We are providing RSVP cards with our formal invitation. Please mail the RSVP card to Lyndsey and Robert by the 20th of February, 2024.'},
+  {title: '16. When is the RSVP deadline?', description: 'Please mail your RSVP by the 20th of February, 2024.'},
+  {title: '17. I can\'t attend the wedding in person. Will there be a virtual wedding celebration?', description: 'We are currently confirming the livestream capabilities of the church with our priest, and we will update everyone as our wedding day grows nearer.'},
+  {title: '18. I\'m visiting from out of town. What can I do while I\'m in Ireland?', description: 'There is plenty to do in Ireland, and May is notorious for pleasant weather. Our wedding venue is situated halfway between Dublin and Belfast. We recommend flying into Dublin Airport, as it is the most accessible airport in Ireland and the one situated closest to our wedding venues. In Dublin, we recommend enjoying the Guinness Storehouse, the Kilmainham Gaol, or going out to the seaside towns of Howth and Malahide. In Belfast, we recommend going to the Titanic Museum, the Giant’s Causeway, and Bushmills Distillery. If you have specific questions on attractions or locations, we would be happy to provide our opinions and insight.'},
+  {title: '19. Do you have a wedding registry?', description: 'Yes, we have registries available at The Wedding Shop, IKEA, and Amazon. Please find the links below in our registry section.'},
+  {title: '20. Can I bring my gift to the wedding?', description: 'Your presence is a present in itself, but should you wish to bring a gift to our wedding, there will be a gift table and card box for your convenience.'},
+  {title: '21. Will there be any other events to attend during your wedding weekend?', description: 'No, we are only having the one event.'},
+  {title: '22. What’s your wedding hashtag?', description: 'We are using the hashtag #OneMooreMetcalfe for our wedding. Please feel free to use this hashtag when posting on social media so we can find all of your photos.'},
+  {title: '23. When will the reception end? Will there be an after-party?', description: 'The music and dancing will end at 2 AM. There will be an after party in the resident’s bar for anyone who wishes to extend the craic into the small hours of the morning.'},
+  {title: '24. What health and safety measures will you be taking during the event?', description: 'Currently, there are no prevention measures in place in Ireland for COVID-19. Our guests are more than welcome to wear face masks, if desired.'},
+  {title: '25. How will you communicate any updated information and/or changes before the wedding?', description: 'Our wedding website is the best source of information in the lead up to our wedding. Please check regularly for any updated information or changes.'},
+  {title: '26. What’s the best way to contact you if I have additional questions?', description: 'We are best reached through Facebook Messenger. You may also email us, our emails are lyndseylou98@me.com and robert.metcalfe10@outlook.com.'},
+]
 
 export default ShowInvite
