@@ -4,6 +4,7 @@ import Head from "../src/components/Head";
 import resolvePath from "../src/utils/resolvePath";
 import {defaultLocale, t} from "../src/i18n";
 import {useSnapCarousel} from "react-snap-carousel";
+import {Analytics} from "@vercel/analytics/react";
 
 
 const appConfig = {
@@ -97,6 +98,7 @@ const ShowInvite = ({currentUrl, guestListLastUpdatedAt}) => {
                 author={resolvePath('/')}
             />
             <section className="header_area">
+                <Analytics />
                 <div
                     id="home"
                     className="header_slider"

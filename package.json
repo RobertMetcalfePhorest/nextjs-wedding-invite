@@ -9,6 +9,7 @@
     "now:deploy": "yarn sync-guest-list && now --prod"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.1.1",
     "calendar-link": "^2.4.0",
     "csv-parser": "^2.3.2",
     "gensync": "^1.0.0-beta.1",
